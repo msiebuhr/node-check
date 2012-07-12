@@ -1,0 +1,19 @@
+{
+    "author": "Morten Siebuhr <sbhr@sbhr.dk> (http://sbhr.dk)",
+    "name": "check",
+    "description": "Check configurations completeness",
+    "version": "0.0.0",
+    "homepage": "http://github.com/msiebuhr/node-check/",
+    "repository": {
+        "url": "http://github.com/msiebuhr/node-check/"
+    },
+    "main": "lib/index.js",
+    "dependencies": {},
+    "devDependencies": {
+        "vows": "*"
+    },
+    "scripts": {
+        "prepublish": "vows",
+        "test": "vows"
+    }
+}
