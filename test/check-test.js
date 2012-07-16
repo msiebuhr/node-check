@@ -6,21 +6,21 @@ vows.describe("Check").addBatch({
     '{foo: bar}': {
         '.has(foo) is OK': function () {
             assert.isTrue(
-                check({foo: 'bar'}).has('foo').isOK()
+                check({foo: 'bar'}).has('foo').ok()
             );
         },
         '.has(bar) fails': function () {
             assert.isFalse(
-                check({foo: 'bar'}).has('bar').isOK()
+                check({foo: 'bar'}).has('bar').ok()
             );
         }
     },
     '{a: {b: c}}': {
         '.has(a.b) is OK': function () {
-            assert.isTrue(check({a: {b: 'c'}}).has('a.b').isOK());
+            assert.isTrue(check({a: {b: 'c'}}).has('a.b').ok());
         },
         '.has(a.c) fails': function () {
-            assert.isTrue(check({a: {b: 'c'}}).has('a.c').isOK());
+            assert.isTrue(check({a: {b: 'c'}}).has('a.c').ok());
         }
     }
 })['export'](module);

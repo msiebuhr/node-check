@@ -44,8 +44,8 @@ Tests if the given key is present.
 
 Stops the chaining and `assert`() if any keys were missing.
 
-.isOK()
--------
+.ok()
+-----
 
 Stops the chaining and returns if any errors were found.
 
