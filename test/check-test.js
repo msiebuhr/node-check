@@ -14,6 +14,14 @@ vows.describe("Check").addBatch({
                 check({foo: 'bar'}).has('bar').isOK()
             );
         }
+    },
+    '{a: {b: c}}': {
+        '.has(a.b) is OK': function () {
+            assert.isTrue(check({a: {b: 'c'}}).has('a.b').isOK());
+        },
+        '.has(a.c) fails': function () {
+            assert.isTrue(check({a: {b: 'c'}}).has('a.c').isOK());
+        }
     }
 })['export'](module);
 
