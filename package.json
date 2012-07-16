@@ -5,6 +5,7 @@
     "version": "0.0.1",
     "homepage": "http://github.com/msiebuhr/node-check/",
     "repository": {
+        "type": "git",
         "url": "http://github.com/msiebuhr/node-check/"
     },
     "main": "lib/index.js",
