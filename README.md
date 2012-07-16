@@ -62,4 +62,4 @@ Plenty! Report them! And add ideas for great features.
 License
 =======
 
-ISC see LICENSE.
+ISC; see [LICENSE](https://github.com/msiebuhr/node-check/blob/master/LICENSE).
