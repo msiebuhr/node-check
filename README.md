@@ -1,6 +1,10 @@
 node-check
 ==========
 
+Configuration checker.
+
+[![Build Status](https://secure.travis-ci.org/msiebuhr/node-check.png?branch=master)](http://travis-ci.org/msiebuhr/node-check)
+
 Install
 -------
 
