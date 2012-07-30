@@ -23,8 +23,8 @@ Usage
 	};
 
 	check(config)
-		.has('database')
-		.has('someOtherSetting')
+		.has('database.hostname') // Implicitly checks 'database'
+		.isBoolean('database.debug')
 		.has('missingSetting')   // Missing key - this will make check fail.
 		.assert();               // This will assert all keys are there.
 	
@@ -42,6 +42,12 @@ Returns an object on which you can chain tests.
 ---------
 
 Tests if the given key is present.
+
+.isBoolean(key), .isArguments(key), .isFunction(key), .isString(key), .isNumber(key), .isDate(key) and .isRegExp(key)
+---------------------------------------------------------------------------------------------------------------------
+
+First checks if the key is present (as if running `.has(key)`), and then if the
+given key is the right type.
 
 .assert()
 ---------
