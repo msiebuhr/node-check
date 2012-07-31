@@ -41,7 +41,9 @@ Returns an object on which you can chain tests.
 .has(key)
 ---------
 
-Tests if the given key is present.
+Tests if the given key is present. This also works with dot-notation, so
+`has('foo.bar')` will check if `foo` exists and then if `foo` has a `bar`-thing
+stuck on.
 
 .isBoolean(key), .isArguments(key), .isFunction(key), .isString(key), .isNumber(key), .isDate(key) and .isRegExp(key)
 ---------------------------------------------------------------------------------------------------------------------
