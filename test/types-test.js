@@ -4,6 +4,7 @@ var vows = require('vows'),
 
 var data = {
     _arguments: arguments,
+    _array: [1, 2, 3],
     _boolean: false,
     _date: new Date(),
     _float: 1.1,
@@ -14,6 +15,14 @@ var data = {
 };
 
 vows.describe("Type checks").addBatch({
+    'isArray()': {
+        'isArray(<array>) is OK': function () {
+            assert.isTrue(check(data).isArray('_array').ok());
+        },
+        'isArray(<integer>) fails': function () {
+            assert.isFalse(check(data).isArray('_int').ok());
+        }
+    },
     'isString()': {
         'isString(<string>) is OK': function () {
             assert.isTrue(check(data).isString('_string').ok());
