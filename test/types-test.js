@@ -10,11 +10,20 @@ var data = {
     _float: 1.1,
     _function: function () {},
     _int: 1,
+    _object: {foo: 'bar'},
     _regexp: /.*/,
     _string: "string"
 };
 
 vows.describe("Type checks").addBatch({
+    'isObject()': {
+        'isObject(<object>) is OK': function () {
+            assert.isTrue(check(data).isObject('_object').ok());
+        },
+        'isObject(<integer>) fails': function () {
+            assert.isFalse(check(data).isObject('_int').ok());
+        }
+    },
     'isArray()': {
         'isArray(<array>) is OK': function () {
             assert.isTrue(check(data).isArray('_array').ok());
