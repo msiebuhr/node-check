@@ -13,7 +13,51 @@ vows.describe("Check").addBatch({
             assert.isFalse(
                 check({foo: 'bar'}).has('bar').ok()
             );
+        },
+        '.testFunction(bar, function () {}) fails': function () {
+            assert.isFalse(
+                check({foo: 'bar'})
+                    .testFunction('bar', function () {})
+                    .ok()
+            );
+        },
+        '.testFunction(foo, function () {return;}) succeeds': function () {
+            assert.isTrue(
+                check({foo: 'bar'})
+                    .testFunction('foo', function () {return;})
+                    .ok()
+            );
+        },
+        '.testFunction(foo, function (k,v){return v==="bar"?undefined:"err!"}) succeeds': function () {
+            assert.isTrue(
+                check({foo: 'bar'})
+                    .testFunction('foo', function (k,v) {
+                        return v==="bar" ? undefined : "err";
+                    })
+                    .ok()
+            );
+        },
+        '.testFunction(foo, function (k,v){return v!=="bar"?undefined:"err!"}) fails': function () {
+            var res = check({foo: 'bar'})
+                .testFunction('foo', function (k,v) {
+                    return v!=="bar" ? undefined : "err";
+                })
+                .errors();
+
+            assert.equal(res.length, 1);
+            assert.deepEqual(res, ["config error: err"]);
+        },
+        '.testFunction(foo, function (){throw new Error("foo")}) fails': function () {
+            var res = check({foo: 'bar'})
+                .testFunction('foo', function (k,v) {
+                    throw new Error("foo");
+                })
+                .errors();
+
+            assert.equal(res.length, 1);
+            assert.deepEqual(res, ["config error: foo"]);
         }
+
     },
     '{a: {b: c}}': {
         '.has(a.b) is OK': function () {
