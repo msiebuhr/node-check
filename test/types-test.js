@@ -24,13 +24,20 @@ vows.describe("Type checks").addBatch({
             assert.isFalse(check(data).isObject('_int').ok());
         }
     },
-    'isArray()': {
+    'isArray() + message contents': {
         'isArray(<array>) is OK': function () {
-            assert.isTrue(check(data).isArray('_array').ok());
+            var res = check(data).isArray('_array').errors();
+            assert.deepEqual(res, []);
         },
         'isArray(<integer>) fails': function () {
-            assert.isFalse(check(data).isArray('_int').ok());
+            var res = check(data).isArray('_int').errors();
+            assert.deepEqual(res, ["config error: Key '_int' should be an array."]);
+        },
+        'isArray(missing_key) fails': function () {
+            var res = check(data).isArray('missing_key').errors();
+            assert.deepEqual(res, ["config error: Missing key 'missing_key'."]);
         }
+
     },
     'isString()': {
         'isString(<string>) is OK': function () {
