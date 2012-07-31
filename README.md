@@ -45,8 +45,24 @@ Tests if the given key is present. This also works with dot-notation, so
 `has('foo.bar')` will check if `foo` exists and then if `foo` has a `bar`-thing
 stuck on.
 
-.isObject(key), .isArray(key), .isBoolean(key), .isArguments(key), .isFunction(key), .isString(key), .isNumber(key), .isDate(key) and .isRegExp(key)
-----------------------------------------------------------------------------------------------------------------------------------------------------
+.isArguments(key)
+-----------------
+.isArray(key)
+-------------
+.isBoolean(key)
+---------------
+.isDate(key)
+------------
+.isFunction(key)
+----------------
+.isNumber(key)
+--------------
+.isObject(key)
+--------------
+.isRegExp(key)
+--------------
+.isString(key)
+--------------
 
 First checks if the key is present (as if running `.has(key)`), and then if the
 given key is the right type.
