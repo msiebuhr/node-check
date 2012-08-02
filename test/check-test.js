@@ -45,7 +45,7 @@ vows.describe("Check").addBatch({
                 .errors();
 
             assert.equal(res.length, 1);
-            assert.deepEqual(res, ["config error: err"]);
+            assert.deepEqual(res, ["err"]);
         },
         '.testFunction(foo, function (){throw new Error("foo")}) fails': function () {
             var res = check({foo: 'bar'})
@@ -55,7 +55,7 @@ vows.describe("Check").addBatch({
                 .errors();
 
             assert.equal(res.length, 1);
-            assert.deepEqual(res, ["config error: foo"]);
+            assert.deepEqual(res, ["foo"]);
         }
 
     },

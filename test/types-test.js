@@ -31,11 +31,11 @@ vows.describe("Type checks").addBatch({
         },
         'isArray(<integer>) fails': function () {
             var res = check(data).isArray('_int').errors();
-            assert.deepEqual(res, ["config error: Key '_int' should be an array."]);
+            assert.deepEqual(res, ["Key '_int' should be an array."]);
         },
         'isArray(missing_key) fails': function () {
             var res = check(data).isArray('missing_key').errors();
-            assert.deepEqual(res, ["config error: Missing key 'missing_key'."]);
+            assert.deepEqual(res, ["Missing key 'missing_key'."]);
         }
 
     },
