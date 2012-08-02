@@ -18,7 +18,7 @@ Usage
     var check = require('check');
 
 	var config = {
-	    database: 'foo',
+	    database: {hostname: 'example.com', debug: false},
 		someOtherSetting: 'bar'
 	};
 
@@ -26,8 +26,17 @@ Usage
 		.has('database.hostname') // Implicitly checks 'database'
 		.isBoolean('database.debug')
 		.has('missingSetting')   // Missing key - this will make check fail.
-		.assert();               // This will assert all keys are there.
-	
+		.assert();               // Assert if anything isn't as required.
+
+Will produce an error not entirely unlike this:
+
+    AssertionError: Incorrect configuration:
+	    Missing key 'missingSetting'.
+	at functionA (/your/source/code/a.js:line:col)
+	at functionB (/your/source/code/b.js:line:col)
+	...
+	at EventEmitter._tickCallback (node.js:190:38)
+
 API
 ===
 
@@ -36,7 +45,7 @@ Initialization
 
     check(object-literal)
 
-Returns an object on which you can chain tests.
+Returns an chainable object whereon the following functions can be used.
 
 .has(key)
 ---------
@@ -72,13 +81,13 @@ stuck on.
 .isSymbolicLink(key)
 --------------------
 
-First checks if the key is present (as if running `.has(key)`), and then if the
+First checks if the key is present (as if running `.has(key)`), and if the
 given key is the right type.
 
 .assert()
 ---------
 
-Stops the chaining and `assert`() if any keys were missing.
+Stops the chaining and `assert()` if any keys were missing.
 
 .ok()
 -----

@@ -64,7 +64,7 @@ vows.describe("Check").addBatch({
             assert.isTrue(check({a: {b: 'c'}}).has('a.b').ok());
         },
         '.has(a.c) fails': function () {
-            assert.isTrue(check({a: {b: 'c'}}).has('a.c').ok());
+            assert.isFalse(check({a: {b: 'c'}}).has('a.c').ok());
         }
     }
 })['export'](module);
