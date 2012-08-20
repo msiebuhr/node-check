@@ -24,23 +24,23 @@ vows.describe("Check").addBatch({
         '.testFunction(foo, function () {return;}) succeeds': function () {
             assert.isTrue(
                 check({foo: 'bar'})
-                    .testFunction('foo', function () {return;})
+                    .testFunction('foo', function () { return; })
                     .ok()
             );
         },
         '.testFunction(foo, function (k,v){return v==="bar"?undefined:"err!"}) succeeds': function () {
             assert.isTrue(
                 check({foo: 'bar'})
-                    .testFunction('foo', function (k,v) {
-                        return v==="bar" ? undefined : "err";
+                    .testFunction('foo', function (k, v) {
+                        return v === "bar" ? undefined : "err";
                     })
                     .ok()
             );
         },
         '.testFunction(foo, function (k,v){return v!=="bar"?undefined:"err!"}) fails': function () {
             var res = check({foo: 'bar'})
-                .testFunction('foo', function (k,v) {
-                    return v!=="bar" ? undefined : "err";
+                .testFunction('foo', function (k, v) {
+                    return v !== "bar" ? undefined : "err";
                 })
                 .errors();
 
@@ -49,7 +49,7 @@ vows.describe("Check").addBatch({
         },
         '.testFunction(foo, function (){throw new Error("foo")}) fails': function () {
             var res = check({foo: 'bar'})
-                .testFunction('foo', function (k,v) {
+                .testFunction('foo', function (k, v) {
                     throw new Error("foo");
                 })
                 .errors();

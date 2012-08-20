@@ -64,8 +64,8 @@ vows.describe("Finalizer checks").addBatch({
             'Top stack element refers to this file': function (e) {
                 var atParts = e.stack
                     .split('\n')
-                    .filter(function (line) {return line.match(/\s+at/);});
-                assert(atParts[0].indexOf(__filename) !== -1)
+                    .filter(function (line) { return line.match(/\s+at/); });
+                assert(atParts[0].indexOf(__filename) !== -1);
             }
         }
     }
