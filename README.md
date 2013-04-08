@@ -104,6 +104,11 @@ Bugs
 
 Plenty! Report them! And add ideas for great features.
 
+See Also
+========
+
+* [node-validator](https://github.com/chriso/node-validator)
+
 License
 =======
 
