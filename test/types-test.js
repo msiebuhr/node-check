@@ -16,86 +16,86 @@ var data = {
 };
 
 vows.describe("Type checks").addBatch({
-    'isObject()': {
-        'isObject(<object>) is OK': function () {
-            assert.isTrue(check(data).isObject('_object').ok());
+    'hasObject()': {
+        'hasObject(<object>) is OK': function () {
+            assert.isTrue(check(data).hasObject('_object').ok());
         },
-        'isObject(<integer>) fails': function () {
-            assert.isFalse(check(data).isObject('_int').ok());
+        'hasObject(<integer>) fails': function () {
+            assert.isFalse(check(data).hasObject('_int').ok());
         }
     },
-    'isArray() + message contents': {
-        'isArray(<array>) is OK': function () {
-            var res = check(data).isArray('_array').errors();
+    'hasArray() + message contents': {
+        'hasArray(<array>) is OK': function () {
+            var res = check(data).hasArray('_array').errors();
             assert.deepEqual(res, []);
         },
-        'isArray(<integer>) fails': function () {
-            var res = check(data).isArray('_int').errors();
+        'hasArray(<integer>) fails': function () {
+            var res = check(data).hasArray('_int').errors();
             assert.deepEqual(res, ["Key '_int' should be an array."]);
         },
-        'isArray(missing_key) fails': function () {
-            var res = check(data).isArray('missing_key').errors();
+        'hasArray(missing_key) fails': function () {
+            var res = check(data).hasArray('missing_key').errors();
             assert.deepEqual(res, ["Missing key 'missing_key'."]);
         }
 
     },
-    'isString()': {
-        'isString(<string>) is OK': function () {
-            assert.isTrue(check(data).isString('_string').ok());
+    'hasString()': {
+        'hasString(<string>) is OK': function () {
+            assert.isTrue(check(data).hasString('_string').ok());
         },
-        'isString(<integer>) fails': function () {
-            assert.isFalse(check(data).isString('_int').ok());
+        'hasString(<integer>) fails': function () {
+            assert.isFalse(check(data).hasString('_int').ok());
         }
     },
-    'isArguments()': {
-        'isArguments(<int>) fails': function () {
-            assert.isFalse(check(data).isArguments('_int').ok());
+    'hasArguments()': {
+        'hasArguments(<int>) fails': function () {
+            assert.isFalse(check(data).hasArguments('_int').ok());
         },
-        'isArguments(<arguments>) is OK': function () {
-            assert.isTrue(check(data).isArguments('_arguments').ok());
+        'hasArguments(<arguments>) is OK': function () {
+            assert.isTrue(check(data).hasArguments('_arguments').ok());
         }
     },
-    'isFunction()': {
-        'isFunction(<string>) fails': function () {
-            assert.isFalse(check(data).isFunction('_string').ok());
+    'hasFunction()': {
+        'hasFunction(<string>) fails': function () {
+            assert.isFalse(check(data).hasFunction('_string').ok());
         },
         'isfunction(<function>) is OK': function () {
-            assert.isTrue(check(data).isFunction('_function').ok());
+            assert.isTrue(check(data).hasFunction('_function').ok());
         }
     },
-    'isNumber()': {
-        'isNumber(<string>) fails': function () {
-            assert.isFalse(check(data).isNumber('_string').ok());
+    'hasNumber()': {
+        'hasNumber(<string>) fails': function () {
+            assert.isFalse(check(data).hasNumber('_string').ok());
         },
-        'isNumber(<int>) is OK': function () {
-            assert.isTrue(check(data).isNumber('_int').ok());
+        'hasNumber(<int>) is OK': function () {
+            assert.isTrue(check(data).hasNumber('_int').ok());
         },
-        'isNumber(<float>) is OK': function () {
-            assert.isTrue(check(data).isNumber('_float').ok());
+        'hasNumber(<float>) is OK': function () {
+            assert.isTrue(check(data).hasNumber('_float').ok());
         }
     },
-    'isDate()': {
-        'isDate(<string>) fails': function () {
-            assert.isFalse(check(data).isDate('_string').ok());
+    'hasDate()': {
+        'hasDate(<string>) fails': function () {
+            assert.isFalse(check(data).hasDate('_string').ok());
         },
-        'isDate(<date>) is OK': function () {
-            assert.isTrue(check(data).isDate('_date').ok());
+        'hasDate(<date>) is OK': function () {
+            assert.isTrue(check(data).hasDate('_date').ok());
         }
     },
-    'isBoolean()': {
-        'isBoolean(<string>) fails': function () {
-            assert.isFalse(check(data).isBoolean('_string').ok());
+    'hasBoolean()': {
+        'hasBoolean(<string>) fails': function () {
+            assert.isFalse(check(data).hasBoolean('_string').ok());
         },
-        'isBoolean(<boolean>) is OK': function () {
-            assert.isTrue(check(data).isBoolean('_boolean').ok());
+        'hasBoolean(<boolean>) is OK': function () {
+            assert.isTrue(check(data).hasBoolean('_boolean').ok());
         }
     },
-    'isRegExp()': {
-        'isRegExp(<string>) fails': function () {
-            assert.isFalse(check(data).isRegExp('_string').ok());
+    'hasRegExp()': {
+        'hasRegExp(<string>) fails': function () {
+            assert.isFalse(check(data).hasRegExp('_string').ok());
         },
-        'isRegExp(<regexp>) is OK': function () {
-            assert.isTrue(check(data).isRegExp('_regexp').ok());
+        'hasRegExp(<regexp>) is OK': function () {
+            assert.isTrue(check(data).hasRegExp('_regexp').ok());
         }
     }
 })['export'](module);
