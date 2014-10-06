@@ -62,10 +62,6 @@ stuck on.
 ---------------
 .isDate(key)
 ------------
-.isDirectory(key)
------------------
-.isFile(key)
-------------
 .isFunction(key)
 ----------------
 .isNumber(key)
@@ -74,12 +70,8 @@ stuck on.
 --------------
 .isRegExp(key)
 --------------
-.isSocket(key)
---------------
 .isString(key)
 --------------
-.isSymbolicLink(key)
---------------------
 
 First checks if the key is present (as if running `.has(key)`), and if the
 given key is the right type.
