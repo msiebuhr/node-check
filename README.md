@@ -76,6 +76,30 @@ stuck on.
 First checks if the key is present (as if running `.has(key)`), and if the
 given key is the right type.
 
+.optionalArguments(key)
+-----------------
+.optionalArray(key)
+-------------
+.optionalBoolean(key)
+---------------
+.optionalDate(key)
+------------
+.optionalFunction(key)
+----------------
+.optionalNumber(key)
+--------------
+.optionalObject(key)
+--------------
+.optionalRegExp(key)
+--------------
+.optionalString(key)
+--------------
+
+If the key is present, it checks if it is of the indicated type.
+
+Finalizers
+==========
+
 .assert()
 ---------
 

@@ -16,12 +16,21 @@ var data = {
 };
 
 vows.describe("Type checks").addBatch({
-    'hasObject()': {
+    'Objects': {
         'hasObject(<object>) is OK': function () {
             assert.isTrue(check(data).hasObject('_object').ok());
         },
         'hasObject(<integer>) fails': function () {
             assert.isFalse(check(data).hasObject('_int').ok());
+        },
+        'optionalObject(<missing>) is OK': function () {
+            assert.isTrue(check(data).optionalObject('missing').ok());
+        },
+        'optionalObject(<object>) is OK': function () {
+            assert.isTrue(check(data).optionalObject('_object').ok());
+        },
+        'optionalObject(<integer>) fails': function () {
+            assert.isFalse(check(data).optionalObject('_int').ok());
         }
     },
     'hasArray() + message contents': {
@@ -37,14 +46,22 @@ vows.describe("Type checks").addBatch({
             var res = check(data).hasArray('missing_key').errors();
             assert.deepEqual(res, ["Missing key 'missing_key'."]);
         }
-
     },
-    'hasString()': {
+    'Strings': {
         'hasString(<string>) is OK': function () {
             assert.isTrue(check(data).hasString('_string').ok());
         },
         'hasString(<integer>) fails': function () {
             assert.isFalse(check(data).hasString('_int').ok());
+        },
+        'optionalString(<string>) is OK': function () {
+            assert.isTrue(check(data).optionalString('_string').ok());
+        },
+        'optionalString(<integer>) fails': function () {
+            assert.isFalse(check(data).optionalString('_int').ok());
+        },
+        'optionalString(<missing>) fails': function () {
+            assert.isTrue(check(data).optionalString('missing').ok());
         }
     },
     'hasArguments()': {
@@ -59,7 +76,7 @@ vows.describe("Type checks").addBatch({
         'hasFunction(<string>) fails': function () {
             assert.isFalse(check(data).hasFunction('_string').ok());
         },
-        'isfunction(<function>) is OK': function () {
+        'hasFunction(<function>) is OK': function () {
             assert.isTrue(check(data).hasFunction('_function').ok());
         }
     },

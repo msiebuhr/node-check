@@ -56,8 +56,28 @@ vows.describe("Check").addBatch({
 
             assert.equal(res.length, 1);
             assert.deepEqual(res, ["foo"]);
-        }
+        },
+        '.optionalTestFunction(does.not.exist, function () { return "no-op"}) succeeds': function () {
+            var res = check({foo: 'bar'})
+                .optionalTestFunction('does.not.exist', function () { return "no-op"; })
+                .errors();
 
+            assert.equal(res.length, 0);
+        },
+        '.optionalTestFunction(exists, function () { return "failure!"}) fails': function () {
+            var res = check({exists: 'bar'})
+                .optionalTestFunction('exists', function () { return "failure!"; })
+                .errors();
+
+            assert.equal(res.length, 1);
+        },
+        '.optionalTestFunction(exists, function () { return; }) succeeds': function () {
+            var res = check({exists: 'bar'})
+                .optionalTestFunction('exists', function () { return; })
+                .errors();
+
+            assert.equal(res.length, 0);
+        }
     },
     '{a: {b: c}}': {
         '.has(a.b) is OK': function () {
