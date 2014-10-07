@@ -2,7 +2,7 @@
     "author": "Morten Siebuhr <sbhr@sbhr.dk> (http://sbhr.dk)",
     "name": "check",
     "description": "Check configurations completeness",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "homepage": "http://github.com/msiebuhr/node-check/",
     "repository": {
         "type": "git",
