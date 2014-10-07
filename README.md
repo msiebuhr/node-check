@@ -24,7 +24,7 @@ Usage
 
 	check(config)
 		.has('database.hostname') // Implicitly checks 'database'
-		.isBoolean('database.debug')
+		.hasBoolean('database.debug')
 		.has('missingSetting')   // Missing key - this will make check fail.
 		.assert();               // Assert if anything isn't as required.
 
@@ -54,35 +54,51 @@ Tests if the given key is present. This also works with dot-notation, so
 `has('foo.bar')` will check if `foo` exists and then if `foo` has a `bar`-thing
 stuck on.
 
-.isArguments(key)
+.hasArguments(key)
 -----------------
-.isArray(key)
+.hasArray(key)
 -------------
-.isBoolean(key)
+.hasBoolean(key)
 ---------------
-.isDate(key)
+.hasDate(key)
 ------------
-.isDirectory(key)
------------------
-.isFile(key)
-------------
-.isFunction(key)
+.hasFunction(key)
 ----------------
-.isNumber(key)
+.hasNumber(key)
 --------------
-.isObject(key)
+.hasObject(key)
 --------------
-.isRegExp(key)
+.hasRegExp(key)
 --------------
-.isSocket(key)
+.hasString(key)
 --------------
-.isString(key)
---------------
-.isSymbolicLink(key)
---------------------
 
 First checks if the key is present (as if running `.has(key)`), and if the
 given key is the right type.
+
+.optionalArguments(key)
+-----------------
+.optionalArray(key)
+-------------
+.optionalBoolean(key)
+---------------
+.optionalDate(key)
+------------
+.optionalFunction(key)
+----------------
+.optionalNumber(key)
+--------------
+.optionalObject(key)
+--------------
+.optionalRegExp(key)
+--------------
+.optionalString(key)
+--------------
+
+If the key is present, it checks if it is of the indicated type.
+
+Finalizers
+==========
 
 .assert()
 ---------

@@ -15,7 +15,6 @@
         "vows": "*"
     },
     "scripts": {
-        "prepublish": "make",
         "test": "make"
     }
 }
